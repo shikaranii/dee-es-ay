@@ -9,11 +9,10 @@ public class number {
 
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Welcome to the Number Guessing Game!");
-        System.out.println("I have selected a random number between 1 and 100. Try to guess it!");
+        System.out.println("Number Guessing Game");
+        System.out.println("Try to guess the selected number from 1 to 100");
 
         while (true) {
-            System.out.print("Enter your guess: ");
             int userGuess = scanner.nextInt();
             attempts++;
 
@@ -21,9 +20,9 @@ public class number {
                 System.out.println("Congratulations! You guessed the number " + randomNumber + " correctly in " + attempts + " attempts.");
                 break;
             } else if (userGuess < randomNumber) {
-                System.out.println("Try again! The number is higher.");
+                System.out.println("Higher");
             } else {
-                System.out.println("Try again! The number is lower.");
+                System.out.println("Lower");
             }
         }
 
