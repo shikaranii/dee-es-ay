@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class Software {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SoftwareInventory softwareInventory = new SoftwareInventory();
+
+        int choice;
+        do {
+            System.out.println("Software Store Menu:");
+            System.out.println("1. Show Software");
+            System.out.println("2. Add Software");
+            System.out.println("3. Sell");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    softwareInventory.showSoftware();
+                    break;
+                case 2:
+                    System.out.print("Enter the software name: ");
+                    String softwareName = scanner.next();
+                    softwareInventory.addSoftware(softwareName);
+                    break;
+                case 3:
+                    System.out.print("Enter the software name to sell: ");
+                    String soldSoftware = scanner.next();
+                    softwareInventory.sellSoftware(soldSoftware);
+                    break;
+                case 4:
+                    System.out.println("Exiting the Software Store. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        } while (choice != 4);
+
+        scanner.close();
+    }
+}
+
+class SoftwareInventory {
+    // Assume a simple list to store software
+    private java.util.List<String> softwareList;
+
+    public SoftwareInventory() {
+        this.softwareList = new java.util.ArrayList<>();
+    }
+
+    public void showSoftware() {
+        if (softwareList.isEmpty()) {
+            System.out.println("No software available.");
+        } else {
+            System.out.println("Software in the inventory:");
+            for (String software : softwareList) {
+                System.out.println("- " + software);
+            }
+        }
+    }
+
+    public void addSoftware(String softwareName) {
+        softwareList.add(softwareName);
+        System.out.println(softwareName + " added to the inventory.");
+    }
+
+    public void sellSoftware(String softwareName) {
+        if (softwareList.contains(softwareName)) {
+            softwareList.remove(softwareName);
+            System.out.println(softwareName + " sold.");
+        } else {
+            System.out.println("Software not found in the inventory.");
+        }
+    }
+}
